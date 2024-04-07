@@ -29,8 +29,8 @@ app.use(morgan("dev"));
 // import AdminRoute from "./routes/AdminRoute.js";
 import FrontedRoute from "./routes/FrontedRoute.js";
 
-app.use("https://collage-hostel-managment.onrender.com/", FrontedRoute);
-app.use("https://collage-hostel-managment.onrender.com/", (req, res) => {
+app.use("/", FrontedRoute);
+app.use("/", (req, res) => {
   res.redirect("/home");
 });
 // app.use("/user", UserRoute);
