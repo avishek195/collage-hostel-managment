@@ -2,6 +2,7 @@ import UserModel from "../models/UserModel.js";
 import AdminModel from "../models/AdminModel.js";
 import { AdminData } from "../AdminData.js";
 import { CollageData } from "../CollageData.js";
+import getCurrentDate from "../Date/getCurrentDate.js";
 import {
   initialState,
   localStorage,
@@ -12,11 +13,13 @@ import {
 } from "../LocalStorageData/LocalStorageAdmin.js";
 
 export const mainPage = (req, res) => {
+  console.log(initialStateAdmin);
   const allInitialState = {
     isLoggedInAdmin: initialStateAdmin?.isLoggedIn || false,
     isLoggedInUser: initialState?.isLoggedIn || false,
     data: initialState?.data || {},
   };
+  console.log(allInitialState);
   res.render("index.ejs", { allInitialState });
 };
 
@@ -204,14 +207,16 @@ export const roombookingPage = async (req, res) => {
 };
 
 export const viewComplain = async (req, res) => {
-  // const ids = Number(req.params.id);
+  const newData = await UserModel.find({});
+  console.log(newData);
+  const final = newData.filter((e) => e.room.isBooked);
+  console.log(final);
 
-  // const user = await UserModel.findOne({ E_no: ids });
-  // if (!user) {
-  //   return res.render("error.ejs", {
-  //     message: "Error in getting the complain",
-  //   });
-  // }
+  // console.log(newData);
+  localStorageAdmin.setItem("data", JSON.stringify(final));
+  localStorageAdmin.setItem("isLoggedIn", true);
+  initialStateAdmin.isLoggedIn = true;
+  initialStateAdmin.data = final;
   res.render("Admin_Complain.ejs", {
     datas: initialStateAdmin.data,
   });
@@ -238,6 +243,7 @@ export const Createcomplaine = async (req, res) => {
     }
 
     let newComplain = {
+      complain_Date: getCurrentDate(),
       complain_type,
       description,
     };
@@ -341,7 +347,17 @@ export const adminRegister = async (req, res) => {
   }
 };
 
-export const AdminProfile = (req, res) => {
+export const AdminProfile = async (req, res) => {
+  const newData = await UserModel.find({});
+  console.log(newData);
+  const final = newData.filter((e) => e.room.isBooked);
+  console.log(final);
+
+  // console.log(newData);
+  localStorageAdmin.setItem("data", JSON.stringify(final));
+  localStorageAdmin.setItem("isLoggedIn", true);
+  initialStateAdmin.isLoggedIn = true;
+  initialStateAdmin.data = final;
   res.render("Admin_MainPaage.ejs", { initialStateAdmin });
 };
 
@@ -398,6 +414,7 @@ export const adminLogin = async (req, res) => {
 export const AdminLogOut = (req, res) => {
   try {
     const token = req.cookies.token;
+    console.log(token);
     if (!token) {
       return res.status(400).send({
         success: false,
@@ -408,6 +425,7 @@ export const AdminLogOut = (req, res) => {
     localStorageAdmin.clear();
     initialStateAdmin.isLoggedIn = false;
     initialStateAdmin.data = {};
+    console.log(initialStateAdmin);
 
     return res.redirect("/home");
     // res.status(200);
@@ -443,7 +461,7 @@ export const bookedRoom = async (req, res) => {
     }
 
     user.room.isBooked = true;
-    user.room.bookingDate = Date.now();
+    user.room.bookingDate = getCurrentDate();
     user.room.roomId = room_id;
     await user.save();
 

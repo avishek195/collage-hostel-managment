@@ -1,6 +1,6 @@
 export const AdminData = [
   {
-    name: "Avi Mistry",
+    name: "Avishek Mistry",
     enrollmentNo: 12021002028150,
     ph_no: "+918101399813",
     email: "avishekmistry420@gmail.com",

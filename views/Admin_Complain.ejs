@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="Image/UEM-Symbol.png" />
   <title>Complaint Table</title>
   <link rel="stylesheet" href="Admin_Log_sign.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
@@ -46,7 +47,7 @@
       </section> -->
     <section class="table__header">
       <div class="header-content">
-        <h1>Complaint Table</h1>
+        <h1 style="text-align: center;">Complaint Table</h1>
         <button onclick="convertToExcel()">Convert to Excel</button>
 
       </div>
@@ -76,7 +77,9 @@
                 <td>
                   <%=data.ph_no %>
                 </td>
-                <td>22.04.23</td>
+                <td>
+                  <%=complain.complain_Date%>
+                </td>
                 <td><strong>
                     <%=complain.complain_type %>
                   </strong></td>

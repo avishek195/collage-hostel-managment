@@ -2,6 +2,7 @@ import mongoose, { model, mongo } from "mongoose";
 
 import Jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import getCurrentDate from "../Date/getCurrentDate.js";
 const UserSchema = new mongoose.Schema(
   {
     name: {
@@ -30,7 +31,7 @@ const UserSchema = new mongoose.Schema(
         default: false,
       },
       bookingDate: {
-        type: Date,
+        type: String,
       },
       roomId: {
         type: String,
@@ -38,6 +39,9 @@ const UserSchema = new mongoose.Schema(
     },
     complains: [
       {
+        complain_Date: {
+          type: String,
+        },
         complain_type: {
           type: String,
         },
@@ -50,8 +54,8 @@ const UserSchema = new mongoose.Schema(
       type: String,
     },
     createAt: {
-      type: Date,
-      default: Date.now(),
+      type: String,
+      default: getCurrentDate(),
     },
   },
   {
