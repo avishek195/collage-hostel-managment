@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Admin_Log_sign.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,300&display=swap"
+    rel="stylesheet" />
+  <title>Admin Page</title>
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <div class="nav">
+    <div class="logo-container">
+      <img src="UEM-Symbol.png" class="logo" />
+    </div>
+
+    <div class="nav-items">
+      <div><a href="http://localhost:5000/home">Home</a></div>
+      <div><a href="http://localhost:5000/about">About</a></div>
+      <!-- <div><a href="#rooms">Rooms</a></div> -->
+      <div><a href="#pages">Pages</a></div>
+      <div><a href="http://localhost:5000/contact" class="contact">Contact</a></div>
+      <!-- <div class="iconf">
+            <i class="fas fa-user"></i>
+            <div class="menu">
+              <p><a href="#login">Profile</a></p>
+              <p><a href="#signup">Logout</a></p>
+            </div>
+          </div> -->
+    </div>
+  </div>
+
+
+  <!-- Form -->
+  <div class="form">
+
+    <ul class="tab-group">
+      <li class="tab active"><a href="#signup">Sign Up</a></li>
+      <li class="tab"><a href="#login">Log In</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="signup">
+        <h1>Admin Signup</h1>
+
+        <form method="post" action="http://localhost:5000/registeradmin">
+          <!-- <div class="input-box">
+                  <span class="icon"><ion-icon name="user"></ion-icon></span>
+                  <input class="id" type="number" name="id" id="pass" />
+                  <label> <b class="san">ID</b></label>
+                </div> -->
+          <div class="input-box">
+            <!-- <span class="icon"><ion-icon name="user"></ion-icon></span> -->
+            <input class="password san" name="E_no" type="number" id="pass" required />
+            <label> <b class="san">ID</b></label>
+            <span class="icon"><i class="far fa-user"></i></span>
+          </div>
+
+          <div class="input-box">
+
+            <input class="password san" name="password" type="password" id="pass" required />
+
+            <label> <b class="san">Password</b></label>
+            <span class="icon"><i class="fa-solid fa-lock"></i></span>
+          </div>
+
+          <div class="input-box">
+
+            <input class="password san" name="confirmpass" type="password" id="pass" required />
+
+            <label> <b class="san">Confirm Password</b></label>
+            <span class="icon"><i class="fa-solid fa-lock"></i></span>
+          </div>
+
+          <button type="submit" class="btn signinbtn">Signup</button>
+        </form>
+
+      </div>
+
+      <div id="login">
+        <h1>Admin Login</h1>
+
+        <form method="post" action="http://localhost:5000/loginadmin">
+          <!-- <div class="input-box">
+                  <span class="icon"><ion-icon name="user"></ion-icon></span>
+                  <input class="id" type="number" name="id" id="pass" />
+                  <label> <b class="san">ID</b></label>
+                </div> -->
+          <div class="input-box">
+            <span class="icon"><ion-icon name="user"></ion-icon></span>
+            <input class="password san" name="E_no" type="number" id="pass" required />
+            <label> <b class="san">ID</b></label>
+            <span class="icon"><i class="far fa-user"></i></span>
+          </div>
+
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input class="password san" name="password" type="password" id="pass" required />
+
+            <label> <b class="san">Password</b></label>
+            <span class="icon"><i class="fa-solid fa-lock"></i></span>
+          </div>
+
+
+
+          <button type="submit" class="btn signinbtn">Login</button>
+        </form>
+
+
+      </div>
+
+    </div><!-- tab-content -->
+
+  </div> <!-- /form -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="Admin_Log_sign.js"></script>
+</body>
+
+</html>

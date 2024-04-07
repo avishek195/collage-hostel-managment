@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Complaint Table</title>
+  <link rel="stylesheet" href="Admin_Log_sign.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,300&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="Admin_Complain.css" />
+  <!-- Include jsPDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="logo-container">
+      <img src="UEM-Symbol.png" class="logo" />
+    </div>
+
+    <div class="nav-items">
+      <div><a href="http://localhost:5000/home">Home</a></div>
+      <div><a href="http://localhost:5000/adminprofile">Booked Room</a></div>
+      <div class="iconf">
+        <i class="fas fa-user"></i>
+        <div class="menu">
+          <!-- <p><a href="#login">Profile</a></p> -->
+          <p><a href="http://localhost:5000/AdminLogOut">Logout</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="table">
+    <!-- <section class="table__header">
+        <h1>Complaint Table</h1>
+        <button id="generatePdf">Generate PDF</button>
+      </section> -->
+    <section class="table__header">
+      <div class="header-content">
+        <h1>Complaint Table</h1>
+        <button onclick="convertToExcel()">Convert to Excel</button>
+
+      </div>
+    </section>
+    <section class="table__body">
+      <table id="complaintTable">
+        <thead>
+          <tr>
+            <th>Student id</th>
+            <th>Room No</th>
+            <th>Phone No</th>
+            <th>Complaint Date</th>
+            <th>Complaint Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(data of datas){ %>
+            <% for(complain of data.complains ){ %>
+              <tr>
+                <td>
+                  <%=data.name %>
+                </td>
+                <td>
+                  <%=data.room.roomId %>
+                </td>
+                <td>
+                  <%=data.ph_no %>
+                </td>
+                <td>22.04.23</td>
+                <td><strong>
+                    <%=complain.complain_type %>
+                  </strong></td>
+                <td>
+                  <%=complain.description %>
+                </td>
+              </tr>
+              <% } %>
+                <% } %>
+        </tbody>
+      </table>
+      <!-- <button id="generatePdf">Generate PDF</button> -->
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script>
+
+
+    function convertToExcel() {
+      var table = document.getElementById("complaintTable");
+      var wb = XLSX.utils.table_to_book(table);
+      XLSX.writeFile(wb, 'table.xlsx');
+    }
+  </script>
+</body>
+
+</html>

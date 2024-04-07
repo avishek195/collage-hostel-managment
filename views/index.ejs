@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="Image/UEM-Symbol.png" />
+    <link rel="stylesheet" href="Home.css" />
+    <!-- <link rel="stylesheet" href="index.js" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,300&display=swap"
+        rel="stylesheet">
+    <title>College Hostel</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="text">
+            <h1>Welcome to our Hostel : <span class="stylee"></span></h1>
+        </div>
+        <div class="container">
+            <!-- Nav bar -->
+            <div class="nav">
+                <div class="logo-container">
+                    <img src="Image/UEM-Symbol.png" class="logo" />
+                </div>
+
+                <div class="nav-items">
+                    <div><a href="http://localhost:5000/home">Home</a></div>
+                    <div><a href="http://localhost:5000/about">About</a></div>
+                    <!-- <div><a href="#rooms">Rooms</a></div> -->
+                    <div><a href="#pages">Pages</a></div>
+                    <div><a href="http://localhost:5000/contact" class="contact">Contact</a></div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                        <% if(allInitialState.isLoggedInUser===true){ %>
+
+                            <div class="menu">
+                                <p><a
+                                        href="http://localhost:5000/viewprofile/<%= allInitialState.data.E_no %>">Profile</a>
+                                </p>
+                                <br>
+                                <p><a href="http://localhost:5000/logout">Logout</a></p>
+                            </div>
+
+                            <% } else if(allInitialState.isLoggedInAdmin===true) { %>
+
+                                <div class="menu">
+                                    <p><a href="http://localhost:5000/adminprofile">Admin Dashboard</a>
+                                    </p>
+                                    <br>
+                                    <p><a href="http://localhost:5000/AdminLogOut">Logout</a></p>
+                                </div>
+
+                                <% } else { %>
+                                    <div class="menu">
+                                        <p><a href="http://localhost:5000/viewlogin">Student</a></p>
+                                        <br>
+                                        <p><a href="http://localhost:5000/viewadminregister">Admin</a></p>
+                                    </div>
+                                    <% } %>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="title-part">
+                <div class="leftSide">
+                    <div class="left-content">
+                        <h1>
+                            Campus Comfort: Reserve Your College Hostel Spot Hassle-Free!
+                        </h1>
+                        <p>
+                            Experience campus living at its best! Our college hostel offers
+                            modern amenities and a vibrant community. Reserve your spot
+                            today and make campus your home away from home!
+                        </p>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <div class="right-content">
+                        <img src="Image/hostel1.avif" alt="hostel room" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- -->
+            <div class="info-part">
+                <div class="info-part-width">
+                    <div class="info-leftSide">
+                        <div class="info-left-content">
+                            <div class="info-heading">
+                                <h1>We have everything you need</h1>
+                                <p>
+                                    Indulge in the perfect blend of comfort and community at our
+                                    hostel. Discover a supportive environment where friendships
+                                    flourish and memories are made.
+                                </p>
+                            </div>
+                            <div class="info-feature">
+                                <div class="info-left-feature">
+                                    <span class="left wifi">
+                                        <img src="Image/wifi.png" alt="logo" />
+                                        <p class="feature-text">Free available high speed WiFi</p>
+                                    </span>
+                                    <span class="left">
+                                        <img src="Image/suitcase.png" alt="logo" />
+                                        <p class="feature-text">
+                                            Free storage of luggage of any size
+                                        </p>
+                                    </span>
+                                </div>
+                                <div class="info-right-feature">
+                                    <span class="right">
+                                        <img src="Image/location (1).png" alt="logo" />
+                                        <p class="feature-text">
+                                            Convenient location in the center
+                                        </p>
+                                    </span>
+                                    <div class="right">
+                                        <img src="Image/parking.png" alt="logo" />
+                                        <p class="feature-text">Parking place allocated to you</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-rightSide">
+                        <div class="info-right-content">
+                            <img src="Image/room2.jpg" alt="hostel room" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="sticky-btn" onclick="scrollToTop()">↑</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        // setTimeout(function () {
+        //     window.location.href = "/home"
+        // }, 6000)
+        count = 0;
+        count
+        console.log(count++);
+        // heading
+        var typeData = new Typed(".stylee", {
+            strings: [" Find Your Perfect Stay!", "Start Your Journey Here!"],
+            loop: true,
+            typeSpeed: 50,
+            backSpeed: 80,
+            backDelay: 1500,
+        });
+        // navbar
+        const navbar = document.querySelector(".nav");
+        function stickyNavbar() {
+            if (window.scrollY > 0) {
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+        window.addEventListener("scroll", stickyNavbar);
+
+        // sticky button
+        window.onscroll = function () {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20
+            ) {
+                document.querySelector(".sticky-btn").classList.remove("hidden");
+            } else {
+                document.querySelector(".sticky-btn").classList.add("hidden");
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+
+</html>

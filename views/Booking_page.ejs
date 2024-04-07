@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Booking.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,300&display=swap"
+    rel="stylesheet" />
+  <title>Travel Cards</title>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="logo-container">
+      <img src="UEM-Symbol.png" class="logo" />
+    </div>
+
+    <div class="nav-items">
+      <div><a href="http://localhost:5000/home">Home</a></div>
+      <div><a href="http://localhost:5000/contact" class="contact">Contact</a></div>
+      <div class="iconf">
+        <i class="fas fa-user"></i>
+        <div class="menu">
+          <p><a href="http://localhost:5000/viewprofile/<%= initialState.data.E_no %>">Profile</a></p>
+          <p><a href="http://localhost:5000/logout">Logout</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% let myArray=[""] %>
+    <% for(value of final){ %>
+      <% myArray.push(value.room.roomId) %>
+        <% } %>
+
+          <div class="wrapper">
+            <h1>Room No - 301</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+            <!-- <h1>£750</h1> -->
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("301")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/301">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 302</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+            <!-- <h1>£750</h1> -->
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("302")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/302">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 303</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("303")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/303">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 304</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("304")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/304">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 305</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("305")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/305">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 306</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("306")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/306">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 307</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("307")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/307">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 308</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("308")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/308">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 309</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("309")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/309">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 310</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("310")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/310">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 311</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("311")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/311">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 312</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("312")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/312">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+
+
+
+          <div class="wrapper">
+            <h1>Room No - 313</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("313")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/313">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 314</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("314")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/314">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+          <div class="wrapper">
+            <h1>Room No - 315</h1>
+            <div class="image i1"></div>
+            <div class="details">
+              <h1><em>Uemk Hostel</em></h1>
+              <h2>Price ₹ 7500</h2>
+              <p>Per Month</p>
+            </div>
+
+            <div class="icons">
+              <span class="icon left">❮</span>
+              <span class="icon right">❯</span>
+            </div>
+            <% if(myArray.includes("315")){ %>
+
+              <button type="type" class="btn btn-danger" disabled>Already Book</button>
+
+              <% } else { %>
+
+                <form method="get" action="http://localhost:5000/payment/315">
+                  <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+                <% } %>
+          </div>
+
+
+
+          <!-- Repeat the above structure for other cards -->
+          <script src="Booking_page.js"></script>
+</body>
+
+</html>
