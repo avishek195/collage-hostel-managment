@@ -84,7 +84,7 @@ UserSchema.methods = {
     return token;
   },
   comparePassword: async function (password, dbPassword) {
-    console.log(this.password);
+    // console.log(this.password);
     return await bcrypt.compare(password, dbPassword);
   },
 };

@@ -13,13 +13,13 @@ import {
 } from "../LocalStorageData/LocalStorageAdmin.js";
 
 export const mainPage = (req, res) => {
-  console.log(initialStateAdmin);
+  // //console.log(initialStateAdmin);
   const allInitialState = {
     isLoggedInAdmin: initialStateAdmin?.isLoggedIn || false,
     isLoggedInUser: initialState?.isLoggedIn || false,
     data: initialState?.data || {},
   };
-  console.log(allInitialState);
+  // //console.log(allInitialState);
   res.render("index.ejs", { allInitialState });
 };
 
@@ -29,7 +29,7 @@ export const ErrorPage = (req, res) => {
 
 export const StudentRegister = async (req, res) => {
   try {
-    console.log(req.body);
+    // //console.log(req.body);
     const { E_no, password, cnf_password } = req.body;
     if (!E_no || !password || !cnf_password) {
       return res.redirect("/error");
@@ -45,12 +45,12 @@ export const StudentRegister = async (req, res) => {
     if (collageStudent.length === 0) {
       return res.redirect("/error");
     }
-    console.log(collageStudent);
+    // //console.log(collageStudent);
 
     const existUser = await UserModel.findOne({ E_no: id });
-    console.log(existUser);
+    //console.log(existUser);
     if (existUser) {
-      console.log("Exist user error");
+      //console.log("Exist user error");
       return res.redirect("/error");
     }
 
@@ -62,9 +62,9 @@ export const StudentRegister = async (req, res) => {
       ph_no: collageStudent[0].ph_no,
     });
     await user.save();
-    console.log("");
+    //console.log("");
     if (!user) {
-      console.log("User not save error");
+      //console.log("User not save error");
       return res.redirect("/error");
     }
     const token = await user.JWT();
@@ -80,8 +80,8 @@ export const StudentRegister = async (req, res) => {
 
     return res.redirect("/home");
   } catch (e) {
-    console.log(e);
-    console.log("crash site");
+    //console.log(e);
+    //console.log("crash site");
     return res.redirect("/error");
   }
 };
@@ -90,9 +90,9 @@ export const UserProfile = async (req, res) => {
   try {
     const { E_no } = req.params;
     const data = Number(E_no);
-    console.log(data, "ID");
+    //console.log(data, "ID");
     const { id } = req.user;
-    console.log(id, "USER ID");
+    //console.log(id, "USER ID");
 
     if (data !== id) {
       return res.redirect("/error");
@@ -121,7 +121,7 @@ export const StudentLogOut = (req, res) => {
     return res.redirect("/home");
     // res.status(200);
   } catch (e) {
-    console.log("Error in signOut part", e);
+    //console.log("Error in signOut part", e);
     return res.redirect("/error");
   }
 };
@@ -143,7 +143,7 @@ export const StudentLogIn = async (req, res, next) => {
     }
 
     const isTrue = await user.comparePassword(password, user.password);
-    console.log(isTrue);
+    //console.log(isTrue);
     if (isTrue === false) {
       return res.redirect("/error");
     }
@@ -158,7 +158,7 @@ export const StudentLogIn = async (req, res, next) => {
     initialState.data = user;
     return res.redirect("/home");
   } catch (err) {
-    console.log("Error in LogIn Part", err);
+    //console.log("Error in LogIn Part", err);
     return res.redirect("/error");
   }
 };
@@ -202,17 +202,17 @@ export const roombookingPage = async (req, res) => {
   const final = user.filter((e) => {
     return e.room.isBooked === true;
   });
-  console.log(final);
+  //console.log(final);
   res.render("Booking_page.ejs", { initialState, final });
 };
 
 export const viewComplain = async (req, res) => {
   const newData = await UserModel.find({});
-  console.log(newData);
+  //console.log(newData);
   const final = newData.filter((e) => e.room.isBooked);
-  console.log(final);
+  //console.log(final);
 
-  // console.log(newData);
+  // //console.log(newData);
   localStorageAdmin.setItem("data", JSON.stringify(final));
   localStorageAdmin.setItem("isLoggedIn", true);
   initialStateAdmin.isLoggedIn = true;
@@ -226,7 +226,7 @@ export const Createcomplaine = async (req, res) => {
   try {
     const E_id = Number(req.body.E_no);
     const { id } = req.user;
-    console.log(E_id, id);
+    //console.log(E_id, id);
     if (E_id !== id) {
       return res.redirect("/error");
     }
@@ -263,22 +263,22 @@ export const Createcomplaine = async (req, res) => {
 
 export const deleteDataCom = async (req, res) => {
   try {
-    // console.log("Param", req.params);
+    // //console.log("Param", req.params);
     const paramId = req.params;
     const { id } = req.user;
-    console.log(id);
-    // console.log("tokenId", id);
-    console.log(Number(paramId.E_no) === id);
+    //console.log(id);
+    // //console.log("tokenId", id);
+    //console.log(Number(paramId.E_no) === id);
     if (Number(paramId.E_no) !== id) {
       return res.redirect("/error");
     }
     const complainUser = await UserModel.findOne({ E_no: id });
 
     const newComplain = complainUser.complains.filter((e) => {
-      // console.log(e._id.toHexString() !== paramId.c_id);
+      // //console.log(e._id.toHexString() !== paramId.c_id);
       return e._id.toHexString() !== paramId.c_id;
     });
-    // console.log(newComplain);
+    // //console.log(newComplain);
     complainUser.complains = [...newComplain];
     await complainUser.save();
 
@@ -296,11 +296,11 @@ export const deleteDataCom = async (req, res) => {
 export const adminRegister = async (req, res) => {
   try {
     const { E_no, password, confirmpass } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
     if (!E_no || !password || !confirmpass) {
       return res.redirect("/error");
     }
-    console.log(password !== confirmpass);
+    //console.log(password !== confirmpass);
     if (password !== confirmpass) {
       return res.redirect("/error");
     }
@@ -308,7 +308,7 @@ export const adminRegister = async (req, res) => {
 
     //Checking The Admin is Registerd or not
     const collageAdmin = AdminData.filter((e) => e.enrollmentNo === id);
-    console.log(collageAdmin);
+    //console.log(collageAdmin);
     if (collageAdmin.length === 0) {
       return res.redirect("/error");
     }
@@ -349,11 +349,11 @@ export const adminRegister = async (req, res) => {
 
 export const AdminProfile = async (req, res) => {
   const newData = await UserModel.find({});
-  console.log(newData);
+  //console.log(newData);
   const final = newData.filter((e) => e.room.isBooked);
-  console.log(final);
+  //console.log(final);
 
-  // console.log(newData);
+  // //console.log(newData);
   localStorageAdmin.setItem("data", JSON.stringify(final));
   localStorageAdmin.setItem("isLoggedIn", true);
   initialStateAdmin.isLoggedIn = true;
@@ -364,7 +364,7 @@ export const AdminProfile = async (req, res) => {
 export const adminLogin = async (req, res) => {
   try {
     const { E_no, password } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
     const id = Number(E_no);
 
     const user = await AdminModel.findOne({ E_no: id });
@@ -375,7 +375,7 @@ export const adminLogin = async (req, res) => {
       });
     }
     const isTrue = await user.comparePassword(password);
-    console.log(isTrue);
+    //console.log(isTrue);
     if (!isTrue) {
       return res.status(400).send({
         success: false,
@@ -391,11 +391,11 @@ export const adminLogin = async (req, res) => {
     user.password = undefined;
 
     const newData = await UserModel.find({});
-    console.log(newData);
+    //console.log(newData);
     const final = newData.filter((e) => e.room.isBooked);
-    console.log(final);
+    //console.log(final);
 
-    // console.log(newData);
+    // //console.log(newData);
     localStorageAdmin.setItem("data", JSON.stringify(final));
     localStorageAdmin.setItem("isLoggedIn", true);
     initialStateAdmin.isLoggedIn = true;
@@ -403,7 +403,7 @@ export const adminLogin = async (req, res) => {
 
     return res.redirect("/adminprofile");
   } catch (err) {
-    console.log("Error in LogIn Part", err);
+    //console.log("Error in LogIn Part", err);
     return res.status(400).send({
       success: false,
       message: "LogIn Server is Not Working",
@@ -414,7 +414,7 @@ export const adminLogin = async (req, res) => {
 export const AdminLogOut = (req, res) => {
   try {
     const token = req.cookies.token;
-    console.log(token);
+    //console.log(token);
     if (!token) {
       return res.status(400).send({
         success: false,
@@ -425,12 +425,12 @@ export const AdminLogOut = (req, res) => {
     localStorageAdmin.clear();
     initialStateAdmin.isLoggedIn = false;
     initialStateAdmin.data = {};
-    console.log(initialStateAdmin);
+    //console.log(initialStateAdmin);
 
     return res.redirect("/home");
     // res.status(200);
   } catch (e) {
-    console.log("Error in signOut part", e);
+    //console.log("Error in signOut part", e);
     return res.status(400).send({
       success: false,
       message: "Signout Server is Not Working",
@@ -469,13 +469,13 @@ export const bookedRoom = async (req, res) => {
     localStorage.setItem("isLoggedIn", true);
     initialState.isLoggedIn = true;
     initialState.data = user;
-    console.log(initialState);
+    //console.log(initialState);
 
     return res.redirect(`/viewprofile/${user.E_no}`);
 
     // return res.render()
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     return res.redirect("/error");
   }
 };
@@ -492,7 +492,7 @@ export const Payment = (req, res) => {
 export const Unboooked = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id, "ID");
+    //console.log(id, "ID");
     const E_no = Number(id);
 
     const user = await UserModel.findOne({ E_no });
