@@ -29,37 +29,43 @@
                 </div>
 
                 <div class="nav-items">
-                    <div><a href="http://localhost:5000/home">Home</a></div>
-                    <div><a href="http://localhost:5000/about">About</a></div>
+                    <div><a href="https://collage-hostel-managment.onrender.com/home">Home</a></div>
+                    <div><a href="https://collage-hostel-managment.onrender.com/about">About</a></div>
                     <!-- <div><a href="#rooms">Rooms</a></div> -->
                     <div><a href="#pages">Pages</a></div>
-                    <div><a href="http://localhost:5000/contact" class="contact">Contact</a></div>
+                    <div><a href="https://collage-hostel-managment.onrender.com/contact" class="contact">Contact</a>
+                    </div>
                     <div class="icon">
                         <i class="fas fa-user"></i>
                         <% if(allInitialState.isLoggedInUser===true){ %>
 
                             <div class="menu">
                                 <p><a
-                                        href="http://localhost:5000/viewprofile/<%= allInitialState.data.E_no %>">Profile</a>
+                                        href="https://collage-hostel-managment.onrender.com/viewprofile/<%= allInitialState.data.E_no %>">Profile</a>
                                 </p>
                                 <br>
-                                <p><a href="http://localhost:5000/logout">Logout</a></p>
+                                <p><a href="https://collage-hostel-managment.onrender.com/logout">Logout</a></p>
                             </div>
 
                             <% } else if(allInitialState.isLoggedInAdmin===true) { %>
 
                                 <div class="menu">
-                                    <p><a href="http://localhost:5000/adminprofile">Admin Dashboard</a>
+                                    <p><a href="https://collage-hostel-managment.onrender.com/adminprofile">Admin
+                                            Dashboard</a>
                                     </p>
                                     <br>
-                                    <p><a href="http://localhost:5000/AdminLogOut">Logout</a></p>
+                                    <p><a href="https://collage-hostel-managment.onrender.com/AdminLogOut">Logout</a>
+                                    </p>
                                 </div>
 
                                 <% } else { %>
                                     <div class="menu">
-                                        <p><a href="http://localhost:5000/viewlogin">Student</a></p>
+                                        <p><a href="https://collage-hostel-managment.onrender.com/viewlogin">Student</a>
+                                        </p>
                                         <br>
-                                        <p><a href="http://localhost:5000/viewadminregister">Admin</a></p>
+                                        <p><a
+                                                href="https://collage-hostel-managment.onrender.com/viewadminregister">Admin</a>
+                                        </p>
                                     </div>
                                     <% } %>
 
